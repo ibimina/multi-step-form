@@ -19,10 +19,10 @@ const steps = ref([
         class="navlink"
       >
         <span class="step_no">{{ step.no }}</span>
-        <div class="step_title">
+        <p class="step_title">
           <span class="step">{{ step.step }}</span>
           <span class="step_name">{{ step.name }}</span>
-        </div>
+        </p>
       </RouterLink>
     </nav>
   </header>
@@ -48,25 +48,58 @@ nav {
   padding-top: 2em;
 }
 .navlink {
-  border: 2px solid hsl(0, 0%, 100%);
   color: hsl(0, 0%, 100%);
-  padding: 0.2em 0.8em;
-  border-radius: 50%;
 }
-.navlink.router-link-active {
+.navlink.router-link-active .step_no {
   background-color: hsl(206, 94%, 87%);
   color: hsl(213, 96%, 18%);
   border: 0;
 }
+.step_no {
+  border: 1px solid hsl(0, 0%, 100%);
+  padding: 0.2em 0.8em;
+  border-radius: 50%;
+  font-weight: 500;
+}
 .step_title {
   display: none;
+}
+.step {
+  font-size: 0.7em;
+  line-height: 10px;
+  color: hsl(229, 24%, 87%);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.step_name {
+  text-transform: uppercase;
+  font-weight: 500;
 }
 @media (min-width: 60rem) {
   header {
     background-image: url("./assets/images/bg-sidebar-desktop.svg");
+    height: auto;
+    width: auto;
+    padding: 2em 1.5em;
+    border-radius: 8px;
+    text-align: left;
+  }
+  nav {
+    padding-top: 0;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+  .navlink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
   }
   .step_title {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>
