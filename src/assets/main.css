@@ -18,3 +18,18 @@ img,picture{
 a{
     text-decoration: none;
 }
+@media (min-width:60rem) {
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(217, 100%, 97%);
+    }
+    #app{
+        max-width: 800px;
+        width: 100%;
+        padding:1em;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+}
