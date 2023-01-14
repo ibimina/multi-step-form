@@ -5,10 +5,10 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header>
     <nav>
-      <RouterLink to="/">1</RouterLink>
-      <RouterLink to="/plan">2</RouterLink>
-      <RouterLink to="/add-ons">3</RouterLink>
-      <RouterLink to="/summary">4</RouterLink>
+      <RouterLink to="/" class="navlink">1</RouterLink>
+      <RouterLink to="/plan" class="navlink">2</RouterLink>
+      <RouterLink to="/add-ons" class="navlink">3</RouterLink>
+      <RouterLink to="/summary" class="navlink">4</RouterLink>
     </nav>
   </header>
 
