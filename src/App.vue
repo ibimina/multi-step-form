@@ -57,7 +57,12 @@ nav {
 }
 .step_no {
   border: 1px solid hsl(0, 0%, 100%);
-  padding: 0.2em 0.8em;
+  width: 28px;
+  height: 28px;
+  padding: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   font-weight: 500;
 }
