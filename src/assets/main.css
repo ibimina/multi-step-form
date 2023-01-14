@@ -31,5 +31,6 @@ a{
         padding:1em;
         background-color: #fff;
         border-radius: 10px;
+        display: flex;
     }
 }
