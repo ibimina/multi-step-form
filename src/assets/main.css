@@ -1,3 +1,4 @@
+ @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 *,
 *::before,
 *::after {
@@ -10,6 +11,7 @@ body{
     width: 100%;
     font-size: 16px;
     line-height: 32px;
+    font-family: 'Ubuntu', sans-serif;
 }
 img,picture{
     max-width: 100%;
