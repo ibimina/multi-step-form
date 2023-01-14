@@ -2,6 +2,7 @@
 
 <template>
   <main>
+    <p>home</p>
     <!-- Step 1 Your info Step 2 Select plan Step 3 Add-ons Step 4 Summary Personal info Please provide your name, email address,
     and phone number. Name e.g. Stephen King Email Address e.g. stephenking@lorem.com Phone Number e.g. +1 234 567 890 Next
     Step Select your plan You have the option of monthly or yearly billing. Arcade $9/mo Advanced $12/mo Pro $15/mo Monthly
