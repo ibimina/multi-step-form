@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import ButtonEl from "../components/ButtonEl.vue";
+import GoBack from "../components/GoBack.vue";
 import RegForm from "../components/RegForm.vue";
 import SelectButton from "../components/SelectButton.vue";
 import path from "../path";
@@ -108,7 +108,7 @@ const handleNextStep = () => {
     </template>
 
     <template v-slot:footer>
-      <ButtonEl />
+      <GoBack />
       <button @click="handleNextStep">Next Step</button></template
     >
   </RegForm>
