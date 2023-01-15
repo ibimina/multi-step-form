@@ -5,7 +5,9 @@ import path from "../path";
 path();
 const plan = JSON.parse(localStorage.getItem("plan"));
 const addon = JSON.parse(localStorage.getItem("addons"));
-console.log(plan, addon);
+
+const addonTotal = addon.reduce((a, b) => a + Number(b.amount), 0);
+const total = plan.amount + addonTotal;
 </script>
 
 <template>
@@ -32,7 +34,13 @@ console.log(plan, addon);
           </p>
         </div>
       </div>
-      <p>Total () <span></span></p>
+      <p v-if="plan.type">
+        Total (per year) <span>+${{ total }}/yr</span>
+      </p>
+      <p v-else>
+        Total (per month) <span>+${{ total }}</span
+        >/mo
+      </p>
     </div>
     <button>confirm</button>
   </RegForm>
