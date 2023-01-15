@@ -57,7 +57,7 @@ const handlePlan = (e, selectedPlan) => {
 //save selected plan
 const handleNextStep = () => {
   if (plan.value.name && plan.value.amount) {
-    JSON.stringify(localStorage.setItem("plan", plan));
+    localStorage.setItem("plan", JSON.stringify(plan.value));
     route.push("/add-ons");
   }
 };
