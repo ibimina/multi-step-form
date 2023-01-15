@@ -26,6 +26,8 @@ const addOns = [
   },
 ];
 const addOnsValue = ref([]);
+const paymentType = JSON.parse(localStorage.getItem("plan"));
+
 const getAddOns = (e, val) => {
   if (e.target.checked) {
     addOnsValue.value = [...addOnsValue.value, val];
