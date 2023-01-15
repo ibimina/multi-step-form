@@ -47,7 +47,7 @@ const getAddOns = (e, val) => {
 const handleNextStep = () => {
   localStorage.setItem("addons", JSON.stringify(addOnsValue.value));
   route.push("/summary");
- };
+};
 </script>
 
 <template>
