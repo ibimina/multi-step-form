@@ -16,7 +16,7 @@ const addOns = [
     name: "storage",
     addon: "Larger storage",
     desc: "Extra 1TB of cloud save",
-    amount: 5,
+    amount: 2,
   },
   {
     name: "theme",
@@ -60,7 +60,8 @@ const handleNextStep = () => {
         <div>
           <span>{{ addon.addon }}</span> <span>{{ addon.desc }}</span>
         </div>
-        <p>+${{ addon.amount }}/mo</p>
+        <p v-if="paymentType.type">+${{ addon.amount * 10 }}/mo</p>
+        <p v-else>{{ addon.amount }}</p>
       </label>
     </div>
     <button @click="handleNextStep">Next Step</button>
