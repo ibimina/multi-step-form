@@ -18,14 +18,18 @@ console.log(plan, addon);
       <div>
         <div>
           <div>
-            <p>Arcade(Monthly)</p>
+            <p>{{ plan.name }} (Monthly)</p>
             <p>Change</p>
           </div>
-          <p>$9/mo</p>
+          <p v-if="plan.type">${{ plan.amount }}/yr</p>
+          <p v-else>${{ plan.amount }}/mo</p>
         </div>
         <div>
-          <p>online service <span>+$2/mo</span></p>
-          <p>Larger storage <span>+$2/mo</span></p>
+          <p v-for="add in addon" :key="add.name">
+            <span>{{ add.addon }}</span>
+            <span v-if="plan.type"> +${{ add.amount }}/yr</span>
+            <span v-else> +${{ add.amount }}/mo</span>
+          </p>
         </div>
       </div>
       <p>Total () <span></span></p>
