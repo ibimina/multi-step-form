@@ -68,10 +68,13 @@ const handleNextStep = () => {
   <RegForm>
     <div>
       <label v-for="select in selectPlan" :key="select.name">
-        <div>
-          <span>{{ select.name }}</span> <span>${{ select.amount }}/mo</span>
-        </div>
         <img :src="select.img" :alt="select.name" />
+        <div>
+          <span>{{ select.name }}</span>
+          <span v-show="!plan.type">${{ select.amount }}/mo</span>
+          <span v-show="plan.type">${{ select.amount }}/yr</span>
+          <span v-show="plan.type">${{ select.bonus }}</span>
+        </div>
         <input
           type="radio"
           name="plan"
