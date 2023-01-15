@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import ButtonEl from "../components/ButtonEl.vue";
 import RegForm from "../components/RegForm.vue";
 import SelectButton from "../components/SelectButton.vue";
 import path from "../path";
@@ -68,31 +69,47 @@ const handleNextStep = () => {
 <template>
   <SelectButton />
   <RegForm>
-    <div>
-      <label v-for="select in selectPlan" :key="select.name">
-        <img :src="select.img" :alt="select.name" />
+    <template v-slot:header>
+      <h3 class="title">Select your plan</h3>
+      <p class="subtitle">
+        You have the option of monthly or yearly billing
+      </p></template
+    >
+    <template v-slot:body
+      ><div>
+        <label v-for="select in selectPlan" :key="select.name">
+          <img :src="select.img" :alt="select.name" />
+          <div>
+            <span>{{ select.name }}</span>
+            <span v-show="!plan.type">${{ select.amount }}/mo</span>
+            <span v-show="plan.type">${{ select.amount }}/yr</span>
+            <span v-show="plan.type">${{ select.bonus }}</span>
+          </div>
+          <input
+            type="radio"
+            name="plan"
+            :id="select.name"
+            @change="handlePlan($event, select)"
+          />
+        </label>
         <div>
-          <span>{{ select.name }}</span>
-          <span v-show="!plan.type">${{ select.amount }}/mo</span>
-          <span v-show="plan.type">${{ select.amount }}/yr</span>
-          <span v-show="plan.type">${{ select.bonus }}</span>
+          <span>Monthly</span>
+          <label>
+            <span></span>
+            <input
+              type="checkbox"
+              name="sub"
+              id=""
+              @change="handlePlan($event)"
+          /></label>
+          <span>Yearly</span>
         </div>
-        <input
-          type="radio"
-          name="plan"
-          :id="select.name"
-          @change="handlePlan($event, select)"
-        />
-      </label>
-      <div>
-        <span>Monthly</span>
-        <label>
-          <span></span>
-          <input type="checkbox" name="sub" id="" @change="handlePlan($event)"
-        /></label>
-        <span>Yearly</span>
       </div>
-    </div>
-    <button @click="handleNextStep">Next Step</button>
+    </template>
+
+    <template v-slot:footer>
+      <ButtonEl />
+      <button @click="handleNextStep">Next Step</button></template
+    >
   </RegForm>
 </template>
