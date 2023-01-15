@@ -1,8 +1,8 @@
 <template>
   <main>
-    <h3 class="title"></h3>
-    <p class="subtitle"></p>
-    <slot></slot>
+    <slot name="header"></slot>
+    <slot name="body"></slot>
+    <slot name="footer"></slot>
   </main>
 </template>
 
