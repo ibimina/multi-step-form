@@ -42,12 +42,14 @@ const handlePlan = (e, selectedPlan) => {
       const updatedPlan = { ...plan, amount: plan.amount * 10 };
       return updatedPlan;
     });
+    plan.value.amount = plan.value.amount * 10;
   } else if (!e.target.checked && e.target.name === "sub") {
     plan.value.type = e.target.checked;
     selectPlan.value = selectPlan.value.map((plan) => {
       const updatedPlan = { ...plan, amount: plan.amount / 10 };
       return updatedPlan;
     });
+    plan.value.amount = plan.value.amount / 10;
   } else if (selectedPlan) {
     plan.value.name = selectedPlan.name;
     plan.value.amount = selectedPlan.amount;
