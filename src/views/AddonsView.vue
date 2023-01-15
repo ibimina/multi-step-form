@@ -5,7 +5,10 @@ import RegForm from "../components/RegForm.vue";
 import SelectButton from "../components/SelectButton.vue";
 
 const route = useRouter();
-const addOns = [
+
+const addOnsValue = ref([]);
+const paymentType = JSON.parse(localStorage.getItem("plan"));
+const monthly = [
   {
     name: "service",
     addon: "Online service",
@@ -25,8 +28,12 @@ const addOns = [
     amount: 2,
   },
 ];
-const addOnsValue = ref([]);
-const paymentType = JSON.parse(localStorage.getItem("plan"));
+const yearly = monthly.map((adds) => {
+  const updated = { ...adds, amount: adds.amount * 10 };
+  return updated;
+});
+
+const addOns = paymentType.type ? yearly : monthly;
 
 const getAddOns = (e, val) => {
   if (e.target.checked) {
@@ -38,8 +45,9 @@ const getAddOns = (e, val) => {
   }
 };
 const handleNextStep = () => {
+  localStorage.setItem("addons", JSON.stringify(addOnsValue.value));
   route.push("/summary");
-};
+ };
 </script>
 
 <template>
@@ -60,8 +68,8 @@ const handleNextStep = () => {
         <div>
           <span>{{ addon.addon }}</span> <span>{{ addon.desc }}</span>
         </div>
-        <p v-if="paymentType.type">+${{ addon.amount * 10 }}/mo</p>
-        <p v-else>{{ addon.amount }}</p>
+        <p v-if="paymentType.type">+${{ addon.amount }}/yr</p>
+        <p v-else>+${{ addon.amount }}/mo</p>
       </label>
     </div>
     <button @click="handleNextStep">Next Step</button>
