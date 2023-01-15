@@ -14,52 +14,92 @@ const plan = ref({
   name: "",
   amount: "",
   type: false,
+  checked: false,
 });
+
 const selectPlan = ref([
   {
     name: "Arcade",
     amount: 9,
     bonus: "2 months free",
     img: "./images/icon-arcade.svg",
+    checked: false,
   },
   {
     name: "Advance",
     amount: 12,
     bonus: "2 months free",
     img: "./images/icon-advanced.svg",
+    checked: false,
   },
   {
     name: "Pro",
     amount: 15,
     bonus: "2 months free",
     img: "./images/icon-pro.svg",
+    checked: false,
   },
 ]);
-//get selected plan and check the type of payment
+const storage = JSON.parse(localStorage.getItem("plan"));
+
+if (storage) {
+  console.log(storage);
+  plan.value = storage;
+  selectPlan.value = selectPlan.value.map((plan) => {
+    if (plan.name === storage.name && storage.type) {
+      return { ...plan, checked: storage.checked, amount: plan.amount * 10 };
+    } else if (plan.name === storage.name && !storage.type) {
+      return { ...plan, checked: storage.checked };
+    } else if (storage.type === true) {
+      return { ...plan, amount: plan.amount * 10 };
+    } else {
+      return plan;
+    }
+  });
+}
+
 const handlePlan = (e, selectedPlan) => {
   if (e.target.checked && e.target.name === "sub") {
-    plan.value.type = e.target.checked;
     selectPlan.value = selectPlan.value.map((plan) => {
-      const updatedPlan = { ...plan, amount: plan.amount * 10 };
+      const updatedPlan = {
+        ...plan,
+        amount: plan.amount * 10,
+      };
       return updatedPlan;
     });
-    plan.value.amount = plan.value.amount * 10;
+    plan.value = {
+      ...plan.value,
+      type: e.target.checked,
+      amount: plan.value.amount * 10,
+    };
   } else if (!e.target.checked && e.target.name === "sub") {
-    plan.value.type = e.target.checked;
     selectPlan.value = selectPlan.value.map((plan) => {
       const updatedPlan = { ...plan, amount: plan.amount / 10 };
       return updatedPlan;
     });
-    plan.value.amount = plan.value.amount / 10;
+    plan.value = {
+      ...plan.value,
+      type: e.target.checked,
+      amount: plan.value.amount / 10,
+    };
   } else if (selectedPlan) {
-    plan.value.name = selectedPlan.name;
-    plan.value.amount = selectedPlan.amount;
+    plan.value = {
+      ...plan.value,
+      name: selectedPlan.name,
+      amount: selectedPlan.amount,
+      checked: e.target.checked,
+    };
+    selectPlan.value = selectPlan.value.map((plan) => {
+      return selectedPlan.name === plan.name
+        ? { ...plan, checked: e.target.checked }
+        : { ...plan, checked: false };
+    });
   }
 };
 //link to the next form page when a plan is selected
 //save selected plan
 const handleNextStep = () => {
-  if (plan.value.name && plan.value.amount) {
+  if (plan.value) {
     localStorage.setItem("plan", JSON.stringify(plan.value));
     route.push("/add-ons");
   }
@@ -71,12 +111,10 @@ const handleNextStep = () => {
   <RegForm>
     <template v-slot:header>
       <h3 class="title">Select your plan</h3>
-      <p class="subtitle">
-        You have the option of monthly or yearly billing
-      </p></template
-    >
-    <template v-slot:body
-      ><div>
+      <p class="subtitle">You have the option of monthly or yearly billing</p>
+    </template>
+    <template v-slot:body>
+      <div>
         <label v-for="select in selectPlan" :key="select.name">
           <img :src="select.img" :alt="select.name" />
           <div>
@@ -90,6 +128,7 @@ const handleNextStep = () => {
             name="plan"
             :id="select.name"
             @change="handlePlan($event, select)"
+            :checked="select.checked"
           />
         </label>
         <div>
@@ -101,6 +140,7 @@ const handleNextStep = () => {
               name="sub"
               id=""
               @change="handlePlan($event)"
+              :checked="plan.type"
           /></label>
           <span>Yearly</span>
         </div>
@@ -109,7 +149,7 @@ const handleNextStep = () => {
 
     <template v-slot:footer>
       <GoBack />
-      <button @click="handleNextStep">Next Step</button></template
-    >
+      <button @click="handleNextStep">Next Step</button>
+    </template>
   </RegForm>
 </template>
