@@ -21,7 +21,7 @@ const { steps } = path();
 
 <style scoped>
 header {
-  background-image: url("./images/bg-sidebar-mobile.svg");
+  background-image: url("/images/bg-sidebar-mobile.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -74,7 +74,7 @@ nav {
 
 @media (min-width: 60rem) {
   header {
-    background-image: url("./images/bg-sidebar-desktop.svg");
+    background-image: url("/images/bg-sidebar-desktop.svg");
     height: auto;
     width: auto;
     padding: 2em 1.5em;
