@@ -12,6 +12,7 @@ body{
     font-size: 16px;
     line-height: 32px;
     font-family: 'Ubuntu', sans-serif;
+     background-color: hsl(217, 100%, 97%);
 }
 img,picture{
     max-width: 100%;
@@ -25,7 +26,6 @@ a{
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: hsl(217, 100%, 97%);
     }
     #app{
         max-width: 800px;
