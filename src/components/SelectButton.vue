@@ -25,7 +25,7 @@ header {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 10em;
+  height: 12em;
   text-align: center;
 }
 nav {
