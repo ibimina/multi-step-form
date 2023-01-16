@@ -95,12 +95,13 @@ const handlePlan = (e, selectedPlan) => {
         : { ...plan, checked: false };
     });
   }
+  localStorage.setItem("plan", JSON.stringify(plan.value));
 };
 //link to the next form page when a plan is selected
 //save selected plan
 const handleNextStep = () => {
   if (plan.value) {
-    localStorage.setItem("plan", JSON.stringify(plan.value));
+    // localStorage.setItem("plan", JSON.stringify(plan.value));
     route.push("/add-ons");
   }
 };

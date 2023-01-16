@@ -55,20 +55,21 @@ const getAddOns = (e, val) => {
       { name: val.addon, amount: val.amount, checked: e.target.checked },
     ];
     addOns.value = addOns.value.map((on) =>
-      on.name === val.name ? { ...on, checked: e.target.checked } : on
+      on.name === val.addon ? { ...on, checked: e.target.checked } : on
     );
   } else {
     addOnsValue.value = addOnsValue.value.filter(
-      (addon) => addon.name !== val.name
+      (addon) => addon.name !== val.addon
     );
     addOns.value = addOns.value.map((on) =>
-      on.name === val.name ? { ...on, checked: e.target.checked } : on
+      on.name === val.addon ? { ...on, checked: e.target.checked } : on
     );
   }
+  localStorage.setItem("addons", JSON.stringify(addOnsValue.value));
 };
 
 const handleNextStep = () => {
-  localStorage.setItem("addons", JSON.stringify(addOnsValue.value));
+  // localStorage.setItem("addons", JSON.stringify(addOnsValue.value));
   route.push("/summary");
 };
 </script>
