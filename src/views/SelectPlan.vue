@@ -165,8 +165,10 @@ const handleNextStep = () => {
     </template>
 
     <template v-slot:footer>
-      <GoBack />
-      <button @click="handleNextStep" class="left">Next Step</button>
+      <aside>
+        <GoBack />
+        <button @click="handleNextStep" class="left">Next Step</button>
+      </aside>
     </template>
   </RegForm>
 </template>
@@ -183,38 +185,46 @@ const handleNextStep = () => {
   box-shadow: 0px 3px 0px 0px rgba(221, 221, 221, 0.5);
   cursor: pointer;
 }
+
 .plan:hover {
   border: 1px solid hsl(243, 100%, 62%);
 }
+
 .text_blue {
   color: hsl(213, 96%, 18%);
   font-weight: 700;
   margin-bottom: 0.2em;
 }
+
 .text_grey {
   color: hsl(231, 11%, 63%);
   font-size: 14px;
   line-height: 10px;
 }
+
 .text_free {
   line-height: 12px;
   color: hsl(213, 96%, 18%);
   margin-top: 0.8em;
   font-size: 14px;
 }
+
 .plan div {
   display: flex;
   flex-direction: column;
 }
+
 input[type="radio"] {
   width: 0;
   height: 0;
 }
+
 .bord {
   border: 1px solid hsl(243, 100%, 62%);
   background-color: hsl(217, 100%, 97%);
   box-shadow: none;
 }
+
 .paymentplan {
   display: flex;
   align-items: center;
@@ -225,10 +235,12 @@ input[type="radio"] {
   margin-top: 1.5em;
   background-color: hsl(231, 100%, 99%);
 }
+
 .month {
   color: hsl(213, 96%, 18%);
   font-weight: 700;
 }
+
 .toggle {
   width: 33px;
   height: 17px;
@@ -237,6 +249,7 @@ input[type="radio"] {
   position: relative;
   cursor: pointer;
 }
+
 .toggle span {
   width: 11px;
   height: 11px;
@@ -247,21 +260,25 @@ input[type="radio"] {
   left: 0.3em;
   transition: 0.5s;
 }
+
 input[type="checkbox"] {
   width: 0;
   height: 0;
 }
+
 input[type="checkbox"]:checked + .slide {
   -webkit-transform: translateX(13px);
   transform: translateX(13px);
   -ms-transform: translateX(13px);
 }
+
 @media (min-width: 40rem) {
   .plan_flex {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
   }
+
   .plan {
     display: flex;
     flex-direction: column;

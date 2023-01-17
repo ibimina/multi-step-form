@@ -108,8 +108,10 @@ const handleNextStep = () => {
       </div>
     </template>
     <template v-slot:footer>
-      <GoBack />
-      <button @click="handleNextStep" class="left">Next Step</button>
+      <aside>
+        <GoBack />
+        <button @click="handleNextStep" class="left">Next Step</button>
+      </aside>
     </template>
   </RegForm>
 </template>

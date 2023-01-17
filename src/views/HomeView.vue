@@ -121,7 +121,9 @@ const handleNextStep = () => {
     </template>
 
     <template v-slot:footer>
-      <button @click="handleNextStep" class="left">Next Step</button>
+      <aside>
+        <button @click="handleNextStep" class="left">Next Step</button>
+      </aside>
     </template>
   </RegForm>
 </template>

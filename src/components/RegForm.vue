@@ -5,9 +5,7 @@
       <slot name="header"></slot>
       <slot name="body"></slot>
     </section>
-    <aside>
-      <slot name="footer"></slot>
-    </aside>
+    <slot name="footer"></slot>
   </main>
 </template>
 
@@ -24,12 +22,7 @@ section {
   margin-bottom: 2em;
   box-shadow: 0px 3px 0px 0px rgba(221, 221, 221, 0.5);
 }
-aside {
-  background-color: hsl(0, 0%, 100%);
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
+
 @media (min-width: 40rem) {
   main {
     position: relative;
@@ -43,16 +36,6 @@ aside {
     margin: 0 auto;
     padding: 2em 0;
     box-shadow: none;
-  }
-  aside {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    margin: 0 auto 1em;
-    padding: 0;
-    max-width: 440px;
-    width: 100%;
   }
 }
 </style>
