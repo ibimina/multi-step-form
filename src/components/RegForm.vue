@@ -15,7 +15,7 @@
 section {
   background-color: hsl(0, 0%, 100%);
   max-width: 440px;
-  width: 100%;
+  width: 90%;
   padding: 2em 1em;
   border-radius: 8px;
   position: relative;
