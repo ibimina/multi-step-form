@@ -4,7 +4,9 @@ import { useRouter } from "vue-router";
 import GoBack from "../components/GoBack.vue";
 import RegForm from "../components/RegForm.vue";
 import SelectButton from "../components/SelectButton.vue";
+import path from "../path";
 
+path();
 const route = useRouter();
 
 const addOnsValue = ref([]);
