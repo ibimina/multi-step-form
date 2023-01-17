@@ -19,7 +19,7 @@ section {
   padding: 2em 1em;
   border-radius: 8px;
   position: relative;
-  top: -5.2em;
+  top: -5.1em;
   margin: auto;
   margin-bottom: 2em;
   box-shadow: 0px 3px 0px 0px rgba(221, 221, 221, 0.5);
@@ -27,10 +27,6 @@ section {
 aside {
   background-color: hsl(0, 0%, 100%);
   padding: 1em;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }

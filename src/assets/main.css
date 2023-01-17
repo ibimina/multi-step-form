@@ -13,7 +13,6 @@ body,#app{
     line-height: 25px;
     font-family: 'Ubuntu', sans-serif;
     background-color: hsl(217, 100%, 97%);
-    overflow-y:hidden;
 }
 #app{
     position: relative;
