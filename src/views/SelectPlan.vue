@@ -102,7 +102,7 @@ const handlePlan = (e, selectedPlan) => {
 const handleNextStep = () => {
   if (plan.value) {
     // localStorage.setItem("plan", JSON.stringify(plan.value));
-    route.push("/add-ons");
+    route.push("/addons");
   }
 };
 </script>
