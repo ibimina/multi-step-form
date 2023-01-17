@@ -141,6 +141,7 @@ const handleNextStep = () => {
   padding: 1em;
   border-radius: 5px;
   border: 1px solid hsl(229, 24%, 87%);
+  outline: 0;
 }
 .info_con label {
   margin-bottom: 0.1em;
@@ -151,10 +152,10 @@ const handleNextStep = () => {
   justify-content: space-between;
 }
 .info_con input:focus {
-  outline: 1px solid hsl(243, 100%, 62%);
+  border: 1px solid hsl(243, 100%, 62%);
 }
 input.invalid {
-  outline: 1px solid hsl(354, 84%, 57%);
+  border: 1px solid hsl(354, 84%, 57%);
 }
 span.invalid {
   color: hsl(354, 84%, 57%);
