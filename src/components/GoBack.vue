@@ -7,5 +7,5 @@ const handleGoBack = () => {
 </script>
 
 <template>
-  <button @click="handleGoBack">GoBck</button>
+  <button @click="handleGoBack" class="back">Go Back</button>
 </template>
