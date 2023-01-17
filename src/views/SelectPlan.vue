@@ -116,33 +116,49 @@ const handleNextStep = () => {
     </template>
     <template v-slot:body>
       <div>
-        <label v-for="select in selectPlan" :key="select.name">
-          <img :src="select.img" :alt="select.name" />
-          <div>
-            <span>{{ select.name }}</span>
-            <span v-show="!plan.type">${{ select.amount }}/mo</span>
-            <span v-show="plan.type">${{ select.amount }}/yr</span>
-            <span v-show="plan.type">${{ select.bonus }}</span>
-          </div>
-          <input
-            type="radio"
-            name="plan"
-            :id="select.name"
-            @change="handlePlan($event, select)"
-            :checked="select.checked"
-          />
-        </label>
-        <div>
-          <span>Monthly</span>
-          <label>
-            <span></span>
+        <div class="plan_flex">
+          <label
+            v-for="select in selectPlan"
+            :key="select.name"
+            class="plan"
+            :class="{ bord: select.checked }"
+            :for="select.name"
+          >
+            <img :src="select.img" :alt="select.name" />
+            <div>
+              <span class="text_blue">{{ select.name }}</span>
+              <span v-show="!plan.type" class="text_grey"
+                >${{ select.amount }}/mo</span
+              >
+              <span v-show="plan.type" class="text_grey"
+                >${{ select.amount }}/yr</span
+              >
+              <span v-show="plan.type" class="text_free"
+                >${{ select.bonus }}</span
+              >
+            </div>
+            <input
+              type="radio"
+              name="plan"
+              :id="select.name"
+              @change="handlePlan($event, select)"
+              :checked="select.checked"
+            />
+          </label>
+        </div>
+
+        <div class="paymentplan">
+          <span class="month">Monthly</span>
+          <label class="toggle">
             <input
               type="checkbox"
               name="sub"
               id=""
               @change="handlePlan($event)"
               :checked="plan.type"
-          /></label>
+            />
+            <span class="slide"></span>
+          </label>
           <span>Yearly</span>
         </div>
       </div>
@@ -150,7 +166,105 @@ const handleNextStep = () => {
 
     <template v-slot:footer>
       <GoBack />
-      <button @click="handleNextStep">Next Step</button>
+      <button @click="handleNextStep" class="left">Next Step</button>
     </template>
   </RegForm>
 </template>
+
+<style scoped>
+.plan {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+  padding: 1em;
+  border-radius: 7px;
+  border: 1px solid hsl(229, 24%, 87%);
+  margin-bottom: 1em;
+  box-shadow: 0px 3px 0px 0px rgba(221, 221, 221, 0.5);
+  cursor: pointer;
+}
+.plan:hover {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+.text_blue {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+.text_grey {
+  color: hsl(231, 11%, 63%);
+  font-size: 14px;
+  line-height: 10px;
+}
+.text_free {
+  line-height: 12px;
+  color: hsl(213, 96%, 18%);
+  margin-top: 0.8em;
+  font-size: 14px;
+}
+.plan div {
+  display: flex;
+  flex-direction: column;
+}
+input[type="radio"] {
+  width: 0;
+  height: 0;
+}
+.bord {
+  border: 1px solid hsl(243, 100%, 62%);
+  background-color: hsl(217, 100%, 97%);
+  box-shadow: none;
+}
+.paymentplan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding: 0.5em;
+  border-radius: 5px;
+  margin-top: 1.5em;
+  background-color: hsl(231, 100%, 99%);
+}
+.month {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+}
+.toggle {
+  width: 33px;
+  height: 17px;
+  border-radius: 8px;
+  background-color: hsl(213, 96%, 18%);
+  position: relative;
+  cursor: pointer;
+}
+.toggle span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  bottom: 0.2em;
+  left: 0.3em;
+  transition: 0.5s;
+}
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+}
+input[type="checkbox"]:checked + .slide {
+  -webkit-transform: translateX(13px);
+  transform: translateX(13px);
+  -ms-transform: translateX(13px);
+}
+@media (min-width: 40rem) {
+  .plan_flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+  }
+  .plan {
+    display: flex;
+    flex-direction: column;
+  }
+}
+</style>
