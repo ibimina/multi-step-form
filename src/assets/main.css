@@ -13,6 +13,7 @@ body,#app{
     line-height: 25px;
     font-family: 'Ubuntu', sans-serif;
     background-color: hsl(217, 100%, 97%);
+    overflow-y:hidden;
 }
 #app{
     position: relative;
@@ -52,14 +53,14 @@ a{
 .back:hover{
     color: hsl(213, 96%, 18%);
 }
-@media (min-width:60rem) {
+@media (min-width:40rem) {
     body{
         display: flex;
         justify-content: center;
         align-items: center;
     }
     #app{
-        max-width: 800px;
+        max-width: 740px;
         width: 100%;
         padding:1em;
         background-color: #fff;

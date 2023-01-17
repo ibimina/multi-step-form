@@ -72,7 +72,7 @@ nav {
   font-weight: 500;
 }
 
-@media (min-width: 60rem) {
+@media (min-width: 40rem) {
   header {
     background-image: url("/images/bg-sidebar-desktop.svg");
     height: auto;
