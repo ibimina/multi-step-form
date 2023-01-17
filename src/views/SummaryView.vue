@@ -77,14 +77,21 @@ const handleConfirm = () => {
       </div>
     </template>
     <template v-slot:footer>
-      <aside>
-        <GoBack />
-        <button @click="handleConfirm" class="left blue">Confirm</button>
-      </aside>
+      <div class="nen">
+        <aside>
+          <GoBack />
+          <button @click="handleConfirm" class="left blue">Confirm</button>
+        </aside>
+      </div>
     </template>
   </RegForm>
 </template>
 <style>
+.nen {
+  min-height: 23vh;
+  display: flex;
+  align-items: flex-end;
+}
 .summary {
   background-color: hsl(231, 100%, 99%);
   padding: 1em;
@@ -150,5 +157,12 @@ const handleConfirm = () => {
 .blue:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+@media (min-width: 40rem) {
+  .nen {
+    min-height: auto;
+    display: block;
+    margin-top: 1em;
+  }
 }
 </style>
