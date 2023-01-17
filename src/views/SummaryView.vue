@@ -77,8 +77,10 @@ const handleConfirm = () => {
       </div>
     </template>
     <template v-slot:footer>
-      <GoBack />
-      <button @click="handleConfirm" class="left blue">Confirm</button>
+      <aside>
+        <GoBack />
+        <button @click="handleConfirm" class="left blue">Confirm</button>
+      </aside>
     </template>
   </RegForm>
 </template>
